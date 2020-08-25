@@ -1,0 +1,68 @@
+/* 폰트 */
+
+@import url(https://fonts.googleapis.com/earlyaccess/notosanskr.css);
+
+html{
+    font-family: "Noto Sans KR", sans-serif;
+}
+
+/* normal */
+*{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    color: inherit;
+    text-decoration: none;
+    box-sizing: border-box;
+}
+
+
+/* lib */
+
+.con{
+
+    margin: 0 auto;
+}
+
+
+/* 테이블 관련 */
+
+.table-box > table{
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table-box > table th, .table-box > table td{
+    border: 1px solid black;
+    padding: 10px;
+}
+
+/* 폼 관련 */
+
+.form1 .form-control > input{
+    width: 100%;
+    display: block;
+    padding: 5px;
+}
+
+/* 버튼 */
+.btn{
+    display: inline-flex;
+    padding: 15px;
+    font-weight: bold;
+    border-radius: 10px;
+    background-color: transparent;
+    outline: 0;
+    border: 0;
+    color: #fff;
+    background: #3D94F6;
+    background-image: linear-gradient(to bottom, #3D94F6, #1E62D0);
+
+    border: solid #337FED 1px;
+}
+
+
+.btn:hover{
+    background: #1E62D0;
+    background-image: linear-gradient(to bottom, #1E62D0, #3D94F6);
+}
