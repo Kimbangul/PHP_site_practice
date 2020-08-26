@@ -15,6 +15,16 @@ CREATE TABLE `member`(
     `phone` CHAR(20) NOT NULL # 휴대전화번호
 );
 
+# 관리자 회원 생성
+INSERT INTO `member` 
+SET regDate = NOW(),
+updateDate = NOW(),
+loginId = 'admin',
+loginPw = 'admin',
+`name` = '관리자',
+`nickname` = '관리자';
+
+
 CREATE TABLE `board`(
     id INT(10) UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT, # 번호
     regDate DATETIME NOT NULL, # 생성날짜
@@ -47,3 +57,4 @@ CREATE TABLE `article`(
        writerSnsId CHAR(20) NOT NULL, # 작성자 sns 아이디
          writerSnsType CHAR(20) NOT NULL # 작성자 sns 타입
 );
+

@@ -13,7 +13,7 @@ $pageTitle = '로그인';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/../part/adm/head.php';
 ?>
 
-<form class="con table-box form1" action="doLogin.php">
+<form class="con table-box form1" action="doLogin.php" method="POST">
     <table>
         <colgroup>
             <col sidth = "300">
@@ -23,7 +23,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/../part/adm/head.php';
                 <th>로그인 아이디</th>
                 <td>
                     <div class="form-control">
-                        <input type="text" maxlength="20" placeholder="로그인 아이디를 입력해주세요." required autofocus>
+                        <input name="loginId" type="text" maxlength="20" placeholder="로그인 아이디를 입력해주세요." required autofocus>
                     </div>
                 </td>
             </tr>
@@ -32,7 +32,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/../part/adm/head.php';
                 <th>로그인 비번</th>
                 <td>
                     <div class="form-control">
-                        <input type="password" maxlength="20" placeholder="로그인 비번을 입력해주세요." required>
+                        <input name="loginPw" type="password" maxlength="20" placeholder="로그인 비번을 입력해주세요." required>
                     </div>
                 </td>
             </tr>
