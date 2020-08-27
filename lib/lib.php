@@ -40,3 +40,12 @@ function DB__getDBRow($sql){
     }
     return [];
 }
+
+function filterSqlInjection(&$args){
+//  & -> 복사된 값이 아닌 원본 배열의 값을 넘겨받아 수정하겠다.
+
+   foreach ($args as $key => $val){
+       $args[$key] = mysqli_real_escape_string($config['dbConn'] , $val);
+   }
+
+}
