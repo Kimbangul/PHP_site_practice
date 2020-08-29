@@ -16,9 +16,24 @@ function jsHistoryBack(){
 
 function DB__execute($sql){
     global $config;
-    // 외부에서 선언된 $congig 변수를 사용하겠다.
+    // 외부에서 선언된 $config 변수를 사용하겠다.
     return mysqli_query($config['dbConn'], $sql);
 }
+
+function DB__insert($sql) {
+    global $config;
+    DB__execute($sql);
+    return mysqli_insert_id($config['dbConn']);
+}
+
+function DB__update($sql) {
+    DB__execute($sql);
+}
+
+function DB__delete($sql) {
+    DB__execute($sql);
+}
+
 
 function DB__getDBRows($sql){
 
@@ -42,10 +57,11 @@ function DB__getDBRow($sql){
 }
 
 function filterSqlInjection(&$args){
+    global $config;
 //  & -> 복사된 값이 아닌 원본 배열의 값을 넘겨받아 수정하겠다.
 
    foreach ($args as $key => $val){
-       $args[$key] = mysqli_real_escape_string($config['dbConn'] , $val);
+       $args[$key] = mysqli_real_escape_string($config['dbConn'], $val);
    }
 
 }

@@ -33,6 +33,15 @@ CREATE TABLE `board`(
     `code` CHAR(20) NOT NULL # 게시판 코드
 );
 
+# 관리자 회원 생성
+INSERT INTO `board` 
+SET regDate = NOW(),
+updateDate = NOW(),
+`name` = '공지사항',
+`code` = 'notice';
+
+
+
 CREATE TABLE `article`(
     id INT(10) UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT, # 번호
     regDate DATETIME NOT NULL, # 작성날짜
@@ -47,10 +56,10 @@ CREATE TABLE `article`(
     delDate DATETIME NOT NULL, # 삭제날짜
     typeCode CHAR(20) NOT NULL, # 1차 카테고리
     type2Code CHAR(20) NOT NULL, # 2차 카테고리
-    readStatus TINYINT(1) UNSIGNED NOT NULL, # 수신자의 읽기 상태
-    readDate DATETIME NOT NULL, # 수신자의 읽은 날짜
-    completeStatus TINYINT(1) UNSIGNED NOT NULL, # 완료 상태
-    completeDate DATETIME NOT NULL, # 완료 날짜
+    readStatus tinyint(1) unsigned not null, # 수신자의 읽기 상태
+    readDate datetime not null, # 수신자의 읽은 날짜
+    completeStatus tinyint(1) unsigned not null, # 완료 상태
+    completeDate datetime not null, # 완료 날짜
     writerName CHAR(20) NOT NULL, # 작성자 이름
      writerEmail CHAR(100) NOT NULL, # 작성자 이메일
       writerPhone CHAR(20) NOT NULL, # 작성자 전화번호

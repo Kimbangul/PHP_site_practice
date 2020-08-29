@@ -5,7 +5,6 @@ if (isset($config) == false ){
     $config = [];
 }
 
-*
 if (isset($config['needToLogin']) == false ){
     $config['needToLogin'] = true;
 }

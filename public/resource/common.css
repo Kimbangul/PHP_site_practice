@@ -25,6 +25,36 @@ html{
 }
 
 
+.height-100p{
+    height: 100%;
+}
+
+.img-box > img{
+    width: 100%;
+    display: block;
+}
+
+.flex{
+    display:flex;
+
+}
+
+.flex-ai-c{
+    align-items: center;
+}
+
+.flex-jc-c{
+    justify-content: center;
+}
+
+.flex-jc-sb{
+    justify-content: space-around;
+}
+
+.text-align-center{
+    text-align: center;
+}
+
 /* 테이블 관련 */
 
 .table-box > table{
@@ -48,7 +78,7 @@ html{
 /* 버튼 */
 .btn{
     display: inline-flex;
-    padding: 15px;
+    padding: 5px 15px;
     font-weight: bold;
     border-radius: 10px;
     background-color: transparent;
@@ -56,13 +86,18 @@ html{
     border: 0;
     color: #fff;
     background: #3D94F6;
-    background-image: linear-gradient(to bottom, #3D94F6, #1E62D0);
-
-    border: solid #337FED 1px;
+    cursor: pointer;
 }
 
 
 .btn:hover{
     background: #1E62D0;
-    background-image: linear-gradient(to bottom, #1E62D0, #3D94F6);
+}
+
+.btn-success{
+    background: green;
+}
+
+.btn-danger{
+    background: coral;
 }
