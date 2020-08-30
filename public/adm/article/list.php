@@ -2,10 +2,11 @@
 // 관리자 페이지들을 위한 공통 작업
 require_once $_SERVER['DOCUMENT_ROOT'] . '/../init/adm.php';
 
-$pageTitle = '게시물 관리';
+$pageTitle = '게시물 리스트';
 // 관리자 페이지 공통 상단
 require_once $_SERVER['DOCUMENT_ROOT'] . '/../part/adm/head.php';
 
+$_REQUEST['displayStatus'] = '__ALL__';
 $listData = ArticleService::getForPrintListData($_REQUEST);
 $articles = $listData['articles'];
 $totalPage = $listData['totalPage'];
@@ -26,26 +27,27 @@ $boards = ArticleService::getForPrintBoards();
             <th>번호</th>
             <th>날짜</th>
             <th>게시판</th>
-            <th>이름</th>
+            <th>노출상태</th>
+            <th>제목</th>
             <th>비고</th>
         </thead>
         <tbody>
             <?php foreach ( $articles as $article ) { ?>
             <tr>
                 <td><?=$article['id']?></td>
-                <td><?=$article['regDate']?></td>
+                <td><?=$article['regDate']?></td>                                
                 <td><?=$article['boardName']?></td>
-                <td><?=$article['title']?></td>
+                <td><?=ArticleService::getDisplayStatusName($article['displayStatus'])?></td>
+                <td><a href="/adm/article/detail.php?id=<?=$article['id']?>"><?=$article['title']?></a></td>
                 <td class="text-align-center">
-                    <a href="/adm/board/modify.php?id=<?=$article['id']?>" class="btn btn-success">수정</a>
-                    <a onclick="if ( confirm('정말 삭제 하시겠습니까?') == false ) return false;" class="btn btn-danger" href="/adm/board/doDelete.php?id=<?=$article['id']?>">삭제</a>
-                </td>
+                    <a href="/adm/article/modify.php?id=<?=$article['id']?>" class="btn btn-success">수정</a>
+                    <a onclick="if ( confirm('정말 삭제 하시겠습니까?') == false ) return false;" class="btn btn-danger" href="/adm/article/doDelete.php?id=<?=$article['id']?>">삭제</a>
+                    </td>
             </tr>
             <?php } ?>
         </tbody>
     </table>
 </div>
-
 <form class="con table-box form1 margin-top-30">
     <table>
         <colgroup>
@@ -93,17 +95,14 @@ $boards = ArticleService::getForPrintBoards();
         </tbody>
     </table>
 </form>
-
 <div class="con table-box text-align-center margin-top-30">
     <?php for ( $i = 1; $i <= $totalPage; $i++ ) { ?>
         <a href="<?=getNewUri($_SERVER['REQUEST_URI'], 'page', $i)?>" class="btn"><?=$i?></a>
     <?php } ?>
 </div>
-
 <div class="con margin-top-30">
-    <a href="/adm/board/make.php" class="btn btn-info">게시판 생성</a>
+    <a href="/adm/article/write.php" class="btn btn-info">게시물 작성</a>
 </div>
-
 <?php
 // 관리자 페이지 공통 하단
-require_once $_SERVER['DOCUMENT_ROOT'] . '/../part/adm/foot.php'; 
+require_once $_SERVER['DOCUMENT_ROOT'] . '/../part/adm/foot.php';
